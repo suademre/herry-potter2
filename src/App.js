@@ -12,19 +12,15 @@ function App() {
   
     const [like, setLike] = useState([]);
 
-    const  checkLike = (charterName) => {
-        // console.log(like.includes(charterName));
-        const cardLike = like;
-        if (cardLike.includes(charterName)) {
-            let temp = cardLike.indexOf(charterName)
-            cardLike.splice(temp, 1)
-        } else {
-            cardLike.push(charterName)
-        }
-        setLike(cardLike)
-        console.log(like);
-
+    const checkLike = (charterName) => {
+    if (like.includes(charterName)) {
+      let temp = like.filter((f) => f.name !== charterName.name);
+      setLike(temp);
+    } else {
+      setLike([...like, charterName]);
     }
+    console.log(like);
+  };
   return (
     <React.Fragment>
       <Header/>
